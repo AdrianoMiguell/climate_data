@@ -1,0 +1,46 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #020309;
+  color: #fefefe;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100vw;
+  height: 100vh;
+  padding: 1em;
+}
+
+.title {
+  text-align: center;
+  margin: 1em;
+}
+
+main {
+  padding: 20vmin;
+  padding-top: 1em;
+}
+
+.climate_data {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.clima_icon{
+    
+}
+.climate {
+  font-size: 40pt;
+}
+
+.bi {
+  font-size: 18pt;
+}
+.bi-brightness-high-fill {
+  color: #efef24;
+}
