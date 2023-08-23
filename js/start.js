@@ -3,16 +3,27 @@ import countries from "./postLocale/countries.js";
 import viewApiData from "./conApi/viewApiData.js";
 import getCityData from "./conApi/getCityData.js";
 import getClimateData from "./conApi/getClimateData.js";
-// import  from "./postLocale/postLoc.js";
+import errorLoc from "./postLocale/errorLoc.js";
 
-// let request = new XMLHttpRequest();
-// let getData = request.open('GET', '27.0.0.1:5500/index.html', false);
-// console.log(request);
+const divInforms = document.querySelector(".div_informs");
+
+let optionCountry = document.querySelector("#country");
+let country = countries();
+console.log(country);
+
+for (let i = 0; i < country.length; i++) {
+  optionCountry.innerHTML += ` <option value="${country[i]}"> ${country[i]} </option> `;
+}
+
+document.getElementById("btnForm").addEventListener("click", () => {
+  sendCity();
+});
 
 async function sendCity() {
   event.preventDefault();
 
   console.log("sendCity");
+  divInforms.style.display = "grid";
 
   let city = document.getElementById("city").value;
   let state = document.getElementById("state").value;
@@ -28,9 +39,7 @@ async function sendCity() {
 async function startConnect(city, state, country) {
   let key = apiKey();
 
-  // if(climateData.main != undefined) {
-  document.querySelector(".spinner-border").style.display = "flex";
-  // }
+  document.querySelector(".div-spinner").style.display = "flex";
 
   if (key == undefined) {
     console.error(
@@ -40,26 +49,20 @@ async function startConnect(city, state, country) {
   }
 
   let cityData = await getCityData(key, city, state, country);
-  let lat = cityData.lat;
-  let lon = cityData.lon;
 
-  let climateData = await getClimateData(key, lat, lon);
+  if (cityData.error == undefined || cityData.error == "error") {
+    errorLoc();
+    document.querySelector(".div-spinner").style.display = "none";
+  } else if (cityData.error == "not") {
+    let lat = cityData.lat;
+    let lon = cityData.lon;
 
-  if (climateData.main != undefined) {
-    document.querySelector(".spinner-border").style.display = "none";
+    let climateData = await getClimateData(key, lat, lon);
+
+    if (climateData.main != undefined) {
+      document.querySelector(".div-spinner").style.display = "none";
+    }
+
+    viewApiData(climateData, cityData);
   }
-
-  viewApiData(climateData, cityData);
 }
-
-let optionCountry = document.querySelector("#country");
-let country = countries();
-console.log(country);
-
-for (let i = 0; i < country.length; i++) {
-  optionCountry.innerHTML += ` <option value="${country[i]}"> ${country[i]} </option> `;
-}
-
-document.getElementById("btnForm").addEventListener("click", () => {
-  sendCity();
-});

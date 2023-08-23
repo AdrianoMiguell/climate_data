@@ -23,7 +23,7 @@
         margin: 1em;
       }
       .inputCity {
-        max-width: 500px;
+        min-width: 500px;
         display: flex;
         flex-direction: column;
         gap: 15px;
@@ -35,24 +35,24 @@
   <body onload="none_spinner()">
     <h1 class="title">Climate Data</h1>
 
-    <div class="space_padding">
+    <main class="space_padding">
       <!-- <form onsubmit="sendCity()" class="inputCity"> -->
       <div class="inputCity">
         <label for="city" class="fs-5"> Cidade </label>
         <input
-          required
           type="text"
           name="city"
           id="city"
           class="form-control"
+          required
         />
         <label for="state" class="fs-5"> Estado </label>
         <input
-          required
           type="text"
           name="state"
           id="state"
           class="form-control"
+          required
         />
         <div class="w-100 d-flex justify-content-between">
           <div>
@@ -65,34 +65,34 @@
         </div>
         <!-- </form> -->
       </div>
-    </div>
 
-    <div class="w-100 position-absolute top-50 start-50">
-      <div class="spinner-border text-primary" role="status">
-        <span class="visually-hidden">Loading...</span>
-      </div>
-    </div>
-
-    <main class="space_padding">
-      <span class="prev_today_city"> </span>
-      <div class="climate_data">
-        <div class="clima_icon">
-          <span class="climate"></span>
-          <span class="icon"></span>
+      <div class="div-spinner">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
         </div>
+      </div>
 
-        <div class="climate_info">
-          <span class="umidity"></span>
-          <span class="wind"></span>
-          <span class="condic"></span>
-          <span class="nebul"></span>
+      <div class="div_informs">
+        <span class="prev_today_city"> </span>
+        <div class="error"></div>
+        <div class="climate_data">
+          <div class="clima_icon">
+            <span class="climate"></span>
+            <span class="icon"></span>
+          </div>
+          <div class="climate_info">
+            <span class="umidity"></span>
+            <span class="wind"></span>
+            <span class="condic"></span>
+            <span class="nebul"></span>
+          </div>
         </div>
       </div>
     </main>
 
     <script>
       function none_spinner() {
-        document.querySelector(".spinner-border").style.display = "none";
+        document.querySelector(".div-spinner").style.display = "none";
       }
     </script>
 

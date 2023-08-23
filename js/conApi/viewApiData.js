@@ -1,5 +1,5 @@
 const day_city = document.querySelector(".prev_today_city");
-const climate_data = document.querySelector(".climate_data");
+const error = document.querySelector(".error");
 const icon = document.querySelector(".icon");
 const climate = document.querySelector(".climate");
 const umidity = document.querySelector(".umidity");
@@ -53,10 +53,11 @@ async function viewApiData(climateData, cityData) {
   let temp = convKC(climateData.main.temp);
   let velKM = velKmH(climateData.wind.speed);
   let dayCity = getDayCity();
-
+  
   const response = await fetch("../json/icons.json");
   const data_icon = await response.json();
-
+  
+  error.innerHTML = "";
   day_city.innerHTML = `Previsão de hoje ${dayCity} ${cityData.name} - ${cityData.state} `;
 
   let nLink = chooseIcon(climateData.weather[0].main);
