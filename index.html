@@ -4,31 +4,98 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Climate Data</title>
-    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
+
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <style>
+      .cityForm {
+        margin: 1em;
+      }
+      .inputCity {
+        max-width: 500px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+        justify-content: space-around;
+      }
+    </style>
   </head>
-  <body>
+  <body onload="none_spinner()">
     <h1 class="title">Climate Data</h1>
 
-    <main>
+    <div class="space_padding">
+      <!-- <form onsubmit="sendCity()" class="inputCity"> -->
+      <div class="inputCity">
+        <label for="city" class="fs-5"> Cidade </label>
+        <input
+          required
+          type="text"
+          name="city"
+          id="city"
+          class="form-control"
+        />
+        <label for="state" class="fs-5"> Estado </label>
+        <input
+          required
+          type="text"
+          name="state"
+          id="state"
+          class="form-control"
+        />
+        <div class="w-100 d-flex justify-content-between">
+          <div>
+            <label for="country" class="fs-5"> País </label>
+            <select required name="country" id="country" class="mx-2"></select>
+          </div>
+          <button class="btn btn-primary" type="submit" id="btnForm">
+            Enviar
+          </button>
+        </div>
+        <!-- </form> -->
+      </div>
+    </div>
+
+    <div class="w-100 position-absolute top-50 start-50">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+
+    <main class="space_padding">
       <span class="prev_today_city"> </span>
-
       <div class="climate_data">
-
         <div class="clima_icon">
-            <span class="climate"></span>
-            <span class="icon"></span>
+          <span class="climate"></span>
+          <span class="icon"></span>
         </div>
 
-        <span class="umidity"></span>
-        <span class="wind"></span>
-        <span class="condic"></span>
-        <span class="nebul"></span>
+        <div class="climate_info">
+          <span class="umidity"></span>
+          <span class="wind"></span>
+          <span class="condic"></span>
+          <span class="nebul"></span>
+        </div>
       </div>
     </main>
-<!-- 
+
     <script>
-     
-    </script> -->
-    <script src="./script.js"></script>
+      function none_spinner() {
+        document.querySelector(".spinner-border").style.display = "none";
+      }
+    </script>
+
+    <script type="module" src="./js/start.js"></script>
   </body>
 </html>

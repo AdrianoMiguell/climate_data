@@ -7,6 +7,7 @@
 }
 
 body {
+  overflow-x: hidden;
   background-color: #020309;
   color: #fefefe;
   font-family: Arial, Helvetica, sans-serif;
@@ -21,21 +22,43 @@ body {
 }
 
 main {
-  padding: 20vmin;
-  padding-top: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.space_padding {
+  padding: 5px 20vmin;
+}
+
+.prev_today_city {
+  margin: 1em 0;
+  font-size: 14pt;
 }
 
 .climate_data {
   display: flex;
-  flex-direction: column;
-  gap: 5px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-items: center;
+  gap: 1.75em;
 }
 
-.clima_icon{
-    
+.clima_icon {
+  margin: 1em;
+  display: flex;
+  align-items: start;
+  gap: 0.75em;
 }
 .climate {
   font-size: 40pt;
+}
+
+.climate_info {
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  gap: 0.5em;
 }
 
 .bi {
