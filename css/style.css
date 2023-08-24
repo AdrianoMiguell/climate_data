@@ -71,25 +71,36 @@ select, option{
   gap: 1.75em;
 }
 
-.clima_icon {
-  margin: 1em;
+.climate_icon {
+  margin-right: 1em;
   display: flex;
-  align-items: start;
-  gap: 0.75em;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.15em;
+}
+.climate_icon::after {
+  margin:.5em 0;
+  translate: 13em 0;
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 100px;
+  background-color: rgba(248, 240, 206, 0.5);
+  border-radius: 5px;
+}
+.icon{
+  margin: auto;
 }
 .climate {
   font-size: 40pt;
 }
-
+.subscript{
+  vertical-align: text-top;
+  font-size: 11pt;
+}
 .climate_info {
   display: grid;
   grid-template-rows: repeat(4, 1fr);
   gap: 0.5em;
 }
 
-.bi {
-  font-size: 18pt;
-}
-.bi-brightness-high-fill {
-  color: #efef24;
-}

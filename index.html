@@ -46,6 +46,7 @@
           class="form-control"
           required
         />
+        
         <label for="state" class="fs-5"> Estado </label>
         <input
           type="text"
@@ -53,9 +54,13 @@
           id="state"
           class="form-control"
           required
+          list="statesList"
         />
-        <div class="w-100 d-flex justify-content-between">
-          <div>
+        <datalist id="statesList">
+        </datalist>
+
+        <div class="w-100 d-flex justify-content-between mt-2">
+          <div class="d-flex align-items-center">
             <label for="country" class="fs-5"> País </label>
             <select required name="country" id="country" class="mx-2"></select>
           </div>
@@ -76,9 +81,9 @@
         <span class="prev_today_city"> </span>
         <div class="error"></div>
         <div class="climate_data">
-          <div class="clima_icon">
+          <div class="climate_icon">
+            <img class="icon" />
             <span class="climate"></span>
-            <span class="icon"></span>
           </div>
           <div class="climate_info">
             <span class="umidity"></span>
@@ -89,6 +94,10 @@
         </div>
       </div>
     </main>
+
+    <div class="alert alert-danger position-fixed bottom-0 end-0 w-auto m-2" style="display: none;">
+
+    </div>
 
     <script>
       function none_spinner() {
